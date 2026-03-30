@@ -3,19 +3,17 @@
     "baseUrl": ".",
     "esModuleInterop": true,
     "experimentalDecorators": true,
+    "incremental": true,
     "jsx": "react-jsx",
     "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "moduleResolution": "bundler",
     "noEmit": true,
-    "paths": {
-      "@absolutejs/absolute": ["../../abs/absolutejs/src/index.ts"],
-      "@absolutejs/absolute/*": ["../../abs/absolutejs/src/*/index.ts"]
-    },
     "skipLibCheck": true,
     "strict": true,
     "target": "ESNext",
-    "types": ["bun-types"]
+    "tsBuildInfoFile": ".absolutejs/tsconfig.tsbuildinfo",
+    "types": ["bun"]
   },
   "include": ["src/**/*"]
 }

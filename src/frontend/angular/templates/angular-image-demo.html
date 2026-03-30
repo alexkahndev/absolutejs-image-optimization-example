@@ -22,21 +22,20 @@
 
   <h2 class="section-title">Responsive Images</h2>
   <p class="section-desc">
-    Angular pages render standard &lt;img&gt; tags pointing at the
-    /_absolute/image endpoint. The optimization happens server-side — the
-    component just builds the right URLs.
+    Each image below uses the &lt;abs-image&gt; component with width, height,
+    and sizes. The component generates responsive srcset attributes and serves
+    optimized images through the /_absolute/image endpoint.
   </p>
 
   <div class="image-grid">
     <div class="image-card">
       <div class="image-wrapper">
-        <img
+        <abs-image
           alt="Landscape photo"
-          src="/_absolute/image?url=%2Fassets%2Fjpg%2Flandscape.jpg&w=1200&q=75"
-          width="1200"
-          height="800"
-          loading="lazy"
-          decoding="async"
+          src="/assets/jpg/landscape.jpg"
+          [width]="1200"
+          [height]="800"
+          sizes="(max-width: 640px) 100vw, 340px"
         />
       </div>
       <div class="card-body">
@@ -52,13 +51,12 @@
 
     <div class="image-card">
       <div class="image-wrapper">
-        <img
+        <abs-image
           alt="Portrait photo"
-          src="/_absolute/image?url=%2Fassets%2Fjpg%2Fportrait.jpg&w=640&q=75"
-          width="600"
-          height="900"
-          loading="lazy"
-          decoding="async"
+          src="/assets/jpg/portrait.jpg"
+          [width]="600"
+          [height]="900"
+          sizes="(max-width: 640px) 100vw, 340px"
         />
       </div>
       <div class="card-body">
@@ -74,13 +72,12 @@
 
     <div class="image-card">
       <div class="image-wrapper">
-        <img
+        <abs-image
           alt="Square photo"
-          src="/_absolute/image?url=%2Fassets%2Fjpg%2Fsquare.jpg&w=828&q=75"
-          width="800"
-          height="800"
-          loading="lazy"
-          decoding="async"
+          src="/assets/jpg/square.jpg"
+          [width]="800"
+          [height]="800"
+          sizes="(max-width: 640px) 100vw, 340px"
         />
       </div>
       <div class="card-body">
@@ -101,12 +98,41 @@
   </p>
 
   <div class="fill-demo">
-    <img
+    <abs-image
       alt="Fill mode landscape"
-      src="/_absolute/image?url=%2Fassets%2Fjpg%2Flandscape.jpg&w=1920&q=75"
-      loading="lazy"
-      decoding="async"
+      src="/assets/jpg/landscape.jpg"
+      [fill]="true"
+      sizes="100vw"
     />
+  </div>
+
+  <h2 class="section-title">Unoptimized</h2>
+  <p class="section-desc">
+    Setting unoptimized=true bypasses the optimization endpoint entirely. The
+    original image is served as-is.
+  </p>
+
+  <div class="image-grid">
+    <div class="image-card">
+      <div class="image-wrapper">
+        <abs-image
+          alt="Unoptimized square"
+          src="/assets/jpg/square.jpg"
+          [width]="800"
+          [height]="800"
+          [unoptimized]="true"
+        />
+      </div>
+      <div class="card-body">
+        <div class="card-title">Unoptimized</div>
+        <div class="card-desc">
+          Original JPG served directly. No srcset, no format conversion.
+        </div>
+      </div>
+      <div class="card-meta">
+        <span>unoptimized: <code>true</code></span>
+      </div>
+    </div>
   </div>
 
   <p class="footer">

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Image from "../components/Image.svelte";
+  import Image from "@absolutejs/absolute/svelte/components/Image.svelte";
   import Nav from "../components/Nav.svelte";
 
   type ImageDemoProps = {

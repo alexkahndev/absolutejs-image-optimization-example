@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Image from "../components/Image.vue";
+import Image from "@absolutejs/absolute/vue/components/Image.vue";
 import Nav from "../components/Nav.vue";
 </script>
 
