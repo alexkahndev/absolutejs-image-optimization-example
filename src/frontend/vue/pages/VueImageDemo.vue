@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Image } from "@absolutejs/absolute/vue/components";
+import Image from "../components/Image.vue";
 import Nav from "../components/Nav.vue";
 </script>
 
@@ -55,7 +55,8 @@ import Nav from "../components/Nav.vue";
         <div class="card-body">
           <div class="card-title">Portrait</div>
           <div class="card-desc">
-            600×900 portrait orientation. Aspect ratio preserved via width/height.
+            600×900 portrait orientation. Aspect ratio preserved via
+            width/height.
           </div>
         </div>
         <div class="card-meta">
@@ -106,8 +107,8 @@ import Nav from "../components/Nav.vue";
         <div class="card-body">
           <div class="card-title">Priority Image</div>
           <div class="card-desc">
-            Preloaded with &lt;link rel="preload"&gt;. Check the network tab
-            — this loads before other images.
+            Preloaded with &lt;link rel="preload"&gt;. Check the network tab —
+            this loads before other images.
           </div>
         </div>
         <div class="card-meta">
@@ -118,8 +119,8 @@ import Nav from "../components/Nav.vue";
 
     <h2 class="section-title">Fill Mode</h2>
     <p class="section-desc">
-      Fill mode makes the image fill its parent container with object-fit: cover.
-      No width/height needed — the parent controls the dimensions.
+      Fill mode makes the image fill its parent container with object-fit:
+      cover. No width/height needed — the parent controls the dimensions.
     </p>
 
     <div class="fill-demo">
@@ -133,8 +134,8 @@ import Nav from "../components/Nav.vue";
 
     <h2 class="section-title">Unoptimized</h2>
     <p class="section-desc">
-      Setting unoptimized=true bypasses the optimization endpoint entirely.
-      The original image is served as-is.
+      Setting unoptimized=true bypasses the optimization endpoint entirely. The
+      original image is served as-is.
     </p>
 
     <div class="image-grid">
@@ -163,7 +164,9 @@ import Nav from "../components/Nav.vue";
     <p class="footer">
       <img src="/assets/png/absolutejs-temp.png" alt="" />
       Powered by
-      <a href="https://absolutejs.com" target="_blank" rel="noopener noreferrer">AbsoluteJS</a>
+      <a href="https://absolutejs.com" target="_blank" rel="noopener noreferrer"
+        >AbsoluteJS</a
+      >
     </p>
   </main>
 </template>

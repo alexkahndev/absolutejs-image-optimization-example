@@ -2,12 +2,13 @@ import { Elysia } from "elysia";
 import {
   handleReactPageRequest,
   handleHTMLPageRequest,
+  handleHTMXPageRequest,
   generateHeadElement,
   asset,
 } from "@absolutejs/absolute";
+import { handleAngularPageRequest } from "@absolutejs/absolute/angular";
 import { handleSveltePageRequest } from "@absolutejs/absolute/svelte";
 import { handleVuePageRequest } from "@absolutejs/absolute/vue";
-import { handleAngularPageRequest } from "@absolutejs/absolute/angular";
 import { ReactImageDemo } from "../../frontend/react/pages/ReactImageDemo";
 
 export const pagesPlugin = (manifest: Record<string, string>) =>
@@ -48,6 +49,8 @@ export const pagesPlugin = (manifest: Record<string, string>) =>
         }),
       );
     })
+    .get("/html", () => handleHTMLPageRequest(asset(manifest, "HtmlImageDemo")))
+    .get("/htmx", () => handleHTMXPageRequest(asset(manifest, "HtmxImageDemo")))
     .get("/angular", async () =>
       handleAngularPageRequest(
         () => import("../../frontend/angular/pages/angular-image-demo"),
@@ -58,7 +61,4 @@ export const pagesPlugin = (manifest: Record<string, string>) =>
           title: "AbsoluteJS Image Optimization - Angular",
         }),
       ),
-    )
-    .get("/html", () =>
-      handleHTMLPageRequest(asset(manifest, "HtmlImageDemo")),
     );

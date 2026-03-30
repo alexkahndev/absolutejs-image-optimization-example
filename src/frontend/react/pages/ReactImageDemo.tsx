@@ -1,10 +1,61 @@
-import { Image } from "@absolutejs/absolute/react/components";
+import { Image } from "../components/Image";
 import { Head } from "../components/Head";
 import { Nav } from "../components/Nav";
 
 type ImageDemoProps = {
   cssPath?: string;
 };
+
+type ImageCardProps = {
+  alt: string;
+  description: string;
+  height?: number;
+  metaLabel: string;
+  metaValue: string;
+  priority?: boolean;
+  sizes?: string;
+  src: string;
+  title: string;
+  unoptimized?: boolean;
+  width?: number;
+};
+
+const ImageCard = ({
+  alt,
+  description,
+  height,
+  metaLabel,
+  metaValue,
+  priority,
+  sizes,
+  src,
+  title,
+  unoptimized,
+  width,
+}: ImageCardProps) => (
+  <div className="image-card">
+    <div className="image-wrapper">
+      <Image
+        alt={alt}
+        height={height}
+        priority={priority}
+        sizes={sizes}
+        src={src}
+        unoptimized={unoptimized}
+        width={width}
+      />
+    </div>
+    <div className="card-body">
+      <div className="card-title">{title}</div>
+      <div className="card-desc">{description}</div>
+    </div>
+    <div className="card-meta">
+      <span>
+        {metaLabel}: <code>{metaValue}</code>
+      </span>
+    </div>
+  </div>
+);
 
 const ImageDemoApp = () => (
   <main>
@@ -22,113 +73,68 @@ const ImageDemoApp = () => (
     </p>
 
     <div className="image-grid">
-      <div className="image-card">
-        <div className="image-wrapper">
-          <Image
-            alt="Landscape photo"
-            height={800}
-            sizes="(max-width: 640px) 100vw, 340px"
-            src="/assets/jpg/landscape.jpg"
-            width={1200}
-          />
-        </div>
-        <div className="card-body">
-          <div className="card-title">Landscape</div>
-          <div className="card-desc">
-            1200×800 with responsive sizes. Browser picks the best variant.
-          </div>
-        </div>
-        <div className="card-meta">
-          <span>
-            src: <code>/assets/jpg/landscape.jpg</code>
-          </span>
-        </div>
-      </div>
+      <ImageCard
+        alt="Landscape photo"
+        description="1200×800 with responsive sizes. Browser picks the best variant."
+        height={800}
+        metaLabel="src"
+        metaValue="/assets/jpg/landscape.jpg"
+        sizes="(max-width: 640px) 100vw, 340px"
+        src="/assets/jpg/landscape.jpg"
+        title="Landscape"
+        width={1200}
+      />
 
-      <div className="image-card">
-        <div className="image-wrapper">
-          <Image
-            alt="Portrait photo"
-            height={900}
-            sizes="(max-width: 640px) 100vw, 340px"
-            src="/assets/jpg/portrait.jpg"
-            width={600}
-          />
-        </div>
-        <div className="card-body">
-          <div className="card-title">Portrait</div>
-          <div className="card-desc">
-            600×900 portrait orientation. Aspect ratio preserved via width/height.
-          </div>
-        </div>
-        <div className="card-meta">
-          <span>
-            src: <code>/assets/jpg/portrait.jpg</code>
-          </span>
-        </div>
-      </div>
+      <ImageCard
+        alt="Portrait photo"
+        description="600×900 portrait orientation. Aspect ratio preserved via width/height."
+        height={900}
+        metaLabel="src"
+        metaValue="/assets/jpg/portrait.jpg"
+        sizes="(max-width: 640px) 100vw, 340px"
+        src="/assets/jpg/portrait.jpg"
+        title="Portrait"
+        width={600}
+      />
 
-      <div className="image-card">
-        <div className="image-wrapper">
-          <Image
-            alt="Square photo"
-            height={800}
-            sizes="(max-width: 640px) 100vw, 340px"
-            src="/assets/jpg/square.jpg"
-            width={800}
-          />
-        </div>
-        <div className="card-body">
-          <div className="card-title">Square</div>
-          <div className="card-desc">
-            800×800 square image. CLS prevented by width/height attributes.
-          </div>
-        </div>
-        <div className="card-meta">
-          <span>
-            src: <code>/assets/jpg/square.jpg</code>
-          </span>
-        </div>
-      </div>
+      <ImageCard
+        alt="Square photo"
+        description="800×800 square image. CLS prevented by width/height attributes."
+        height={800}
+        metaLabel="src"
+        metaValue="/assets/jpg/square.jpg"
+        sizes="(max-width: 640px) 100vw, 340px"
+        src="/assets/jpg/square.jpg"
+        title="Square"
+        width={800}
+      />
     </div>
 
     <h2 className="section-title">Priority (Preloaded)</h2>
     <p className="section-desc">
-      This image has priority=true which adds a {"<link rel=\"preload\">"} tag
-      and sets loading="eager" + fetchPriority="high" for above-the-fold images.
+      This image has priority=true which adds a {'<link rel="preload">'} tag and
+      sets loading="eager" + fetchPriority="high" for above-the-fold images.
     </p>
 
     <div className="image-grid">
-      <div className="image-card">
-        <div className="image-wrapper">
-          <Image
-            alt="Priority landscape"
-            height={800}
-            priority
-            sizes="(max-width: 640px) 100vw, 50vw"
-            src="/assets/jpg/landscape.jpg"
-            width={1200}
-          />
-        </div>
-        <div className="card-body">
-          <div className="card-title">Priority Image</div>
-          <div className="card-desc">
-            Preloaded with {"<link rel=\"preload\">"}. Check the network tab
-            — this loads before other images.
-          </div>
-        </div>
-        <div className="card-meta">
-          <span>
-            priority: <code>true</code>
-          </span>
-        </div>
-      </div>
+      <ImageCard
+        alt="Priority landscape"
+        description={`Preloaded with <link rel="preload">. Check the network tab — this loads before other images.`}
+        height={800}
+        metaLabel="priority"
+        metaValue="true"
+        priority
+        sizes="(max-width: 640px) 100vw, 50vw"
+        src="/assets/jpg/landscape.jpg"
+        title="Priority Image"
+        width={1200}
+      />
     </div>
 
     <h2 className="section-title">Fill Mode</h2>
     <p className="section-desc">
-      Fill mode makes the image fill its parent container with object-fit: cover.
-      No width/height needed — the parent controls the dimensions.
+      Fill mode makes the image fill its parent container with object-fit:
+      cover. No width/height needed — the parent controls the dimensions.
     </p>
 
     <div className="fill-demo">
@@ -142,33 +148,23 @@ const ImageDemoApp = () => (
 
     <h2 className="section-title">Unoptimized</h2>
     <p className="section-desc">
-      Setting unoptimized=true bypasses the optimization endpoint entirely.
-      The original image is served as-is — useful for SVGs or already-optimized images.
+      Setting unoptimized=true bypasses the optimization endpoint entirely. The
+      original image is served as-is — useful for SVGs or already-optimized
+      images.
     </p>
 
     <div className="image-grid">
-      <div className="image-card">
-        <div className="image-wrapper">
-          <Image
-            alt="Unoptimized square"
-            height={800}
-            src="/assets/jpg/square.jpg"
-            unoptimized
-            width={800}
-          />
-        </div>
-        <div className="card-body">
-          <div className="card-title">Unoptimized</div>
-          <div className="card-desc">
-            Original JPG served directly. No srcset, no format conversion.
-          </div>
-        </div>
-        <div className="card-meta">
-          <span>
-            unoptimized: <code>true</code>
-          </span>
-        </div>
-      </div>
+      <ImageCard
+        alt="Unoptimized square"
+        description="Original JPG served directly. No srcset, no format conversion."
+        height={800}
+        metaLabel="unoptimized"
+        metaValue="true"
+        src="/assets/jpg/square.jpg"
+        title="Unoptimized"
+        unoptimized
+        width={800}
+      />
     </div>
 
     <p className="footer">

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Image from "@absolutejs/absolute/svelte/components/Image.svelte";
+  import Image from "../components/Image.svelte";
   import Nav from "../components/Nav.svelte";
 
   type ImageDemoProps = {
@@ -92,8 +92,8 @@
 
   <h2 class="section-title">Priority (Preloaded)</h2>
   <p class="section-desc">
-    This image has priority=true which adds a &lt;link rel="preload"&gt; tag
-    and sets loading="eager" + fetchPriority="high" for above-the-fold images.
+    This image has priority=true which adds a &lt;link rel="preload"&gt; tag and
+    sets loading="eager" + fetchPriority="high" for above-the-fold images.
   </p>
 
   <div class="image-grid">
@@ -111,8 +111,8 @@
       <div class="card-body">
         <div class="card-title">Priority Image</div>
         <div class="card-desc">
-          Preloaded with &lt;link rel="preload"&gt;. Check the network tab
-          — this loads before other images.
+          Preloaded with &lt;link rel="preload"&gt;. Check the network tab —
+          this loads before other images.
         </div>
       </div>
       <div class="card-meta">
@@ -138,8 +138,8 @@
 
   <h2 class="section-title">Unoptimized</h2>
   <p class="section-desc">
-    Setting unoptimized=true bypasses the optimization endpoint entirely.
-    The original image is served as-is.
+    Setting unoptimized=true bypasses the optimization endpoint entirely. The
+    original image is served as-is.
   </p>
 
   <div class="image-grid">
@@ -168,6 +168,8 @@
   <p class="footer">
     <img src="/assets/png/absolutejs-temp.png" alt="" />
     Powered by
-    <a href="https://absolutejs.com" target="_blank" rel="noopener noreferrer">AbsoluteJS</a>
+    <a href="https://absolutejs.com" target="_blank" rel="noopener noreferrer"
+      >AbsoluteJS</a
+    >
   </p>
 </main>

@@ -1,3 +1,7 @@
+<script setup lang="ts">
+// Nav component — no props needed
+</script>
+
 <template>
   <header>
     <a class="logo" href="/">
@@ -10,6 +14,7 @@
       <a class="active" href="/vue">Vue</a>
       <a href="/angular">Angular</a>
       <a href="/html">HTML</a>
+      <a href="/htmx">HTMX</a>
     </nav>
   </header>
 </template>
