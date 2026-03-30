@@ -7,4 +7,10 @@ export default defineConfig({
   use: {
     baseURL: "http://localhost:3000",
   },
+  webServer: {
+    command: "absolute dev",
+    url: "http://localhost:3000",
+    reuseExistingServer: true,
+    timeout: 30000,
+  },
 });
